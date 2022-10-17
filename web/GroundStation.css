@@ -1,0 +1,162 @@
+body
+{
+    background-color: #121212;
+    color:gainsboro;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 100;
+}
+
+.container
+{
+    width: 100%;
+    margin: 0 auto;
+}
+.card-body-buttons{
+    width: 95%;
+    margin: auto auto;
+}
+.ColLeft
+{
+    width: 47.45%;
+    height: 100%;
+    float:left;
+    background-color: #302827;
+    border: solid 3px #ddcde3;
+    border-radius: 5px;
+}
+.cardButtonsTitle
+{
+    display: flex;
+    text-align: center;
+    font-size:xx-large;
+    justify-content: center;
+}
+
+.WordCheck{
+    height: 34px;
+    display: table-cell;
+    font-size: xx-large;
+    vertical-align: middle;
+    text-align: center;
+    position: relative;
+    padding-left: 5em;
+}
+.ColRight
+{
+    float:right;
+    width: 50%;
+    background-color: #302827;
+    border: solid 3px #ddcde3;
+    border-radius: 5px;
+}
+.form-control{
+    display: flex;
+    margin: 15px auto;
+}
+/*LED SWITCH BEHAVIOR*/
+        .switchLED{
+            position:relative;
+            display: table-cell;
+            width: 25%;
+            height: 40px;
+            margin-left: 5% auto;
+        }
+        .switchLED input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+           
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+        
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 31px;
+            width: 31px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+            margin-left: 1%;
+        }
+        
+        input:checked + .slider {
+            background-color: #2196F3;
+        }
+        
+        input:focus + .slider {
+            box-shadow: 0 0 1px #2196F3;
+        }
+        
+        input:checked + .slider:before {
+            -webkit-transform: translateX(57px);
+            -ms-transform: translateX(57px);
+            transform: translateX(57px);
+        }
+        
+        /* Rounded sliders */
+        .slider.round {
+            border-radius: 34px;
+        }
+        
+        .slider.round:before {
+            border-radius: 50%;
+        }
+/*STATE CHANGE FOR AUTO STATE*/
+            .StateChange {
+                position: relative;
+                border: 1.5px solid #979797;
+                margin: 15px auto;
+                overflow: hidden;
+                padding: 0 !important;
+                -webkit-border-radius: 5px;
+                -moz-border-radius: 5px;
+                border-radius: 5px;
+                height: 92px;
+                width: 100%;
+            }
+            
+            .StateChange>* {
+                float: left;
+            }
+            
+            .StateChange input[type=radio] {
+                display: none;
+            }
+            
+            .StateChange label {
+                font: "Lato Light";
+                background-color: #979797;
+                color: #fcbfff;
+                display: flex;
+                width: 32%;
+                height: 85px;
+                margin: 3px 3px;
+                cursor: pointer;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .toggle_option_slider {
+                z-index: -1;
+                width: 33%;
+                height: 100%;
+                position: absolute;
+                -webkit-transition: all .4s ease;
+                -moz-transition: all .4s ease;
+                -o-transition: all .4s ease;
+                -ms-transition: all .4s ease;
+                transition: all .4s ease;
+            }

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <title> TERRA GROUND STATION </title>
+
+        <script src="./JS/roslib.js"></script>
+        <script src="./JS/jquery-3.6.1.min.js"></script>
+        <script src="./JS/Controller.min.js"></script>
+        <script src="./JS/Controller.layouts.min.js"></script>
+        <script src="./scripts/GroundStation.js"></script>
+
+        <meta charset="UTF-8"/>
+        <link href="GroundStation.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:100" rel="stylesheet">
+       
+    </head>
+     <body>
+         <div class = "container">
+                <div class = "ColLeft">
+                    <div class = "cardWbuttons">
+                        <h3 class="cardButtonsTitle text-center">State Switches</h3>
+                        <div class = "card-body-buttons">
+                            <div class="cardButtonsGrid gap-2">
+                                <label class="switchLED">
+                                    <input type="checkbox">
+                                    <span class="slider round"></span>
+                                </label>
+                                <div class= "WordCheck"><strong> Power Off </strong></div>
+                                <div class = "StateChange">
+                                    <input type="radio" class="toggle_option" id="first_toggle_roku" name="toggle_option">
+                                    <input type="radio" class="toggle_option" id="second_toggle_instructions" name="toggle_option">
+                                    <input type="radio" class="toggle_option" id="third_toggle_line" name="toggle_option">
+                                    <label for="first_toggle"><p id="1">Roku</p></label>
+                                    <label for="second_toggle"><p>Follow Directions</p></label>
+                                    <label for="third_toggle"><p>Follow Line</p></label>
+                                        <div class="toggle_option_slider">
+                                        </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class = "cardROSBridge">
+                        <h3 class="ROSBridgeConnect">ROSBridge Connection</h3>
+                        <div class="BridgeConnecting">
+                            <label>ROS Bridge Server Address</label>
+                            <input type="text" class="form-control" id="rosbridge_address" value="localhost:69">
+                        </div>
+                        <div class="ROSBridge Check">
+                            <label>
+                                ROSBridge Status
+                            </label>
+                            <input type="text" class="form-control" id="rosbridge_status" placeholder="Disconnected" readonly>
+                        </div>
+                        <button type="button" class="btn btn-success" id="rosbridge_connect">
+                            Connect
+                        </button>
+                    </div>
+                    <div class = "ControllerSpace">
+                        <h3 class ="Pairing Check"> Controller Pairing</h3>
+                        <div class="Controller Check" >
+                            <label>
+                                Controller Status
+                            </label>
+                            <input type="text" class="controller-staus" id="control_status" placeholder="Disconnected" readonly>
+                            <button type="button" class="connectcontroller" id="control_activate">
+                                Connect Controller
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class = "ColRight">
+                    <div class = "VideoOutputCard">
+                        <div class = "VideoOutputBody">
+                            <h5 class="CardTitlePico">Camera Output</h5>
+                            <form action="">
+                                <div class="form-group">
+                                    <textarea class="form-control" name="pico_text_area" id="pico_log" style="height: 435px;width:95%" wrap="hard" readonly></textarea>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>     
+            </div>
+        </body>
