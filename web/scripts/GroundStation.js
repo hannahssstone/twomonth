@@ -50,7 +50,7 @@ function connect_rosbridge() {
 
 
 ////CONTROLLER////////////////////////////////
-window.addEventListener('gc.button.press', function(event) {
+/* window.addEventListener('gc.button.press', function(event) {
     var button = event.detail;
     console.log(button);
 }, false);
@@ -61,4 +61,48 @@ window.addEventListener('gc.analog.start', function(event) {
 })
 
 
-window.onload = setup;
+window.onload = setup; */
+
+// reading in controller inputs
+
+// index.html
+<script src="js/Controller.min.js"></script>
+
+// main.js
+Controller.search();
+
+window.addEventListener('gc.controller.found', function(event) {
+    var controller = event.detail.controller;
+    console.log("Controller found at index " + controller.index + ".");
+    console.log("'" + controller.name + "' is ready!");
+}, false);
+
+if (Controller.supported) {
+    Controller.search();
+} else {
+    // Fallback...
+}
+
+Controller.search({
+    unsupportedCallback: fallback
+});
+
+function fallback() {
+    window.alert("This browser does not support the Gamepad API");
+}
+
+Controller.search({
+    settings: {
+        useAnalogAsDpad: "both"
+    }
+});
+
+var controller = Controller.getController(0);
+console.log(controller.settings.useAnalogAsDpad);
+
+// Button press event
+window.addEventListener('gc.button.press', function(event) {
+    var button = event.detail;
+    console.log(button);
+}, false);
+
