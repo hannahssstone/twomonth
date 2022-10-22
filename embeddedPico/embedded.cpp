@@ -1,5 +1,7 @@
 //this is the place for the code on the pico//
 
+
+
 #include <Arduino.h>
 #include <Wire.h>
 #include <DualMAX14870MotorShield.h>
@@ -9,6 +11,8 @@
 #define UART_TX_PIN = 1
 #define UART_RX_PIN = 2
 #define MOT_DRIVE_2_PIN = 27
+#define MOT_DRIVE_1_PIN = 26
+
 
 
 void setup() {
@@ -21,10 +25,20 @@ void setup() {
   int WH3_speed = 0;
   int WH4_speed = 0;
 }
-int speedcalc(posit_x,posit_y){
-  
+double speedcalc(double posit_y)
+{ 
+  int speed = 0;
+  posit_y = 400 * posit_y;
+  return speed;
 }
 void loop() {
+   if (Serial.available()) {
+    String command = Serial.readStringUntil('\n');
+    command.trim();
+    
+    if(cmd = "LEFT_ANALOG_STICK")
+        
+   }
   // put your main code here, to run repeatedly:
-  
+ 
 }
