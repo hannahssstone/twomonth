@@ -16,6 +16,12 @@
 
 Adafruit_LSM6DSOX sox;
 
+Servo vertarmservo;
+Servo horarmservo;
+
+int vertservoangle = 90;
+int horservoangle = 90;
+
 Adafruit_BMP3XX bmp;
 
 DualMAX14870MotorShield motorsL;
@@ -24,6 +30,9 @@ DualMAX14870MotorShield motorsR;
 int sensor_update_timer = 0;
 
 void setup() {
+  pinMode(11, OUTPUT);
+  vertarmservo.attach(9);
+  horarmservo.attach(10);
   Serial.begin(115200);
   while (!Serial);
   Serial.println("Adafruit BMP388 / BMP390 test");
@@ -175,6 +184,7 @@ void setup() {
 
 
 void loop() {
+  digitalWrite(11, HIGH);
   if (Serial.available()) {
     
     String command = Serial.readStringUntil('\n');
@@ -209,6 +219,22 @@ void loop() {
      motorsL.setM2Speed(0);
      motorsR.setM1Speed(0);
      motorsR.setM2Speed(0);
+    }
+    if( command = "ARM_UP"){
+      vertservoangle= vertservoangle+ 2;
+      vertarmservo.write(vertservoangle);
+    }
+    if( command = "ARM_DOWN"){
+      vertservoangle= vertservoangle - 2;
+      vertarmservo.write(vertservoangle);
+    }
+    if( command = "ARM_LEFT"){
+      horservoangle = horservoangle -2;
+      horarmservo.write(horservoangle);
+    }
+    if( command = "ARM_RIGHT"){
+      horservoangle = horservoangle + 2;
+      horarmservo.write(horservoangle);
     }
     
   if(millis() - sensor_update_timer > 500) {
