@@ -1,11 +1,11 @@
 #include <Arduino.h>
 #include <Wire.h>
-#include <Arduino_LSM6DSOX.h>
+#include <Adafruit_LSM6DSOX.h>
 #include <SPI.h>
 #include <Adafruit_Sensor.h>
 #include "Adafruit_BMP3XX.h"
-#include <SoftwareSerial.h>
 #include <DualMAX14870MotorShield.h>
+#include <Servo.h>
 
 #define BMP_SCK 13
 #define BMP_MISO 12
@@ -13,13 +13,6 @@
 #define BMP_CS 10
 
 #define SEALEVELPRESSURE_HPA (1018)
-
-// For SPI mode, we need a CS pin
-#define LSM_CS 10
-// For software-SPI mode we need SCK/MOSI/MISO pins
-#define LSM_SCK 13
-#define LSM_MISO 12
-#define LSM_MOSI 11
 
 Adafruit_LSM6DSOX sox;
 
@@ -179,7 +172,7 @@ void setup() {
     break;
   }
 }
-}
+
 
 void loop() {
   if (Serial.available()) {
@@ -265,6 +258,7 @@ void loop() {
   Serial.println(" m");
 
   Serial.println();
+  }
   }
 
 }
